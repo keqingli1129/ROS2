@@ -5,16 +5,16 @@ from std_msgs.msg import String
 class MyFirstNode(Node):
     def __init__(self):
         super().__init__('my_first_node')
-        # self.publisher_ = self.create_publisher(String, 'my_topic', 10)
-        # timer_period = 1  # seconds
-        # self.timer = self.create_timer(timer_period, self.timer_callback)
+        self.publisher_ = self.create_publisher(String, 'my_topic', 10)
+        timer_period = 1  # seconds
+        self.timer = self.create_timer(timer_period, self.timer_callback)
         self.get_logger().info('MyFirstNode has been started.')
 
-    # def timer_callback(self):
-    #     msg = String()
-    #     msg.data = 'Hello, ROS 2!'
-    #     self.publisher_.publish(msg)
-    #     self.get_logger().info(f'Publishing: "{msg.data}"')
+    def timer_callback(self):
+        msg = String()
+        msg.data = 'Hello, ROS 2!'
+        self.publisher_.publish(msg)
+        self.get_logger().info(f'Publishing: "{msg.data}"')
     
 def main(args=None):
         rclpy.init(args=args)       
