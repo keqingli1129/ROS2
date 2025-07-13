@@ -21,4 +21,14 @@ if(BUILD_TESTING)
   ament_lint_auto_find_test_dependencies()
 endif()
 
+add_executable(my_cpp_node src/my_first_node.cpp)
+ament_target_dependencies(my_cpp_node
+  rclcpp
+)
+
+install(TARGETS
+  my_cpp_node
+  DESTINATION lib/${PROJECT_NAME}
+)
+
 ament_package()
